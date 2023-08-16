@@ -1,0 +1,28 @@
+[
+    {
+        "id":1,
+        "firstname":"meron",
+        "lastname":"legesse",
+        "country":"A.A"
+    },
+    {
+        "id":2,
+        "firstname":"yabtsega",
+        "lastname":"asfaw",
+        "country":"nazrit"
+
+    },
+    {
+        "id":3,
+        "firstname":"tina",
+        "lastname":"abera",
+        "country":" bahirdar"
+    },
+    {
+        "id":4,
+        "firstname":"natnael",
+        "lastname":"zeleke",
+        "country":"gondar"
+ 
+    }
+]

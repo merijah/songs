@@ -1,6 +1,7 @@
 export interface IArtist{
     id?:number;
     firstname:string;
-    lastname:String;
+    lastname:string;
     country:string;
+    about:string;
 }

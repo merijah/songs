@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { IArtist } from '../models/artists';
 
 const ArtistTable = () => {
+    const [artists, setArtists] = useState([])
+
+    useEffect(() => {
+        // fetch data
+        // set artists value
+    }, []);
     return (
         <div>
             <button type="button">Create New</button>

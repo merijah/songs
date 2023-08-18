@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import { IArtist } from '../models/artists';
-import data from '../mock/artists.json';
-const ArtistTable = () => {
-    const [artists, setArtists] = useState<IArtist[]>([])
-    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (data) {
-            setIsLoading(true);
-            setArtists(data);
-            setTimeout(() => setIsLoading(false), 3000);
-        }
-    }, [data]);
+interface IArtistComponent {
+    artists: IArtist[],
+    isLoading: boolean;
+}
 
+const ArtistTable = (props: IArtistComponent) => {
+    const { artists, isLoading} = props;
     return (
         <div>
             <button type="button">Create New</button>
@@ -32,8 +26,8 @@ const ArtistTable = () => {
                         <td colSpan={4} align='center'>Loading</td>
                     </tr>) : artists.length > 0 ? artists.map((artist) => (
                         <tr key={artist.id}>
-                            <td>{artist.firstname}</td>
-                            <td>{artist.lastname}</td>
+                            <td>{artist.firstName}</td>
+                            <td>{artist.lastName}</td>
                             <td>{artist.country}</td>
                             {/* <td>{artist.about}</td> */}
                             <td>

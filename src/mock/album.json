@@ -1,0 +1,21 @@
+[
+    {
+        "id":1,
+        "name":"see the world",
+        "release year":"2000",
+        "duration": "35-60mins"
+    },
+    {
+        "id":2,
+        "name":"on the road",
+        "release year":"2002",
+        "duration": "40-60mins"  
+    },
+    {
+        "id":3,
+        "name":"In the sun",
+        "release year":"2003",
+        "duration": "35-50mins"   
+    }    
+
+]

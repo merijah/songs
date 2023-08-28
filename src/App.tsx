@@ -61,20 +61,21 @@ function App() {
     return result;
   }
   useEffect(() => {
+    if (albumsData) {
+      setIsLoading(true);
+      setAlbum(albumsData);
+      setTimeout(() => setIsLoading(false), 4000);
+    }
+  }, [albumsData]);
+
+  useEffect(() => {
     if (artistsData) {
       setIsLoading(true);
       const _artists: IArtist[] = mapObject(artistsData);
       setArtists(_artists);
       setTimeout(() => setIsLoading(false), 3000);
-      if (albumsData) {
-        setIsLoading(true);
-        setAlbum(album);
-        setTimeout(() => setIsLoading(false), 4000);
-      }
     }
-  }, [albumsData]);
-  [artistsData]
-
+  }, [artistsData]);
   return (
     <div>
       <h1>Welcome</h1>

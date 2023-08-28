@@ -2,20 +2,20 @@
     {
         "id":1,
         "name":"see the world",
-        "year":"2000",
-        "duration": "35-60mins"
+        "year":2000,
+        "duration": 60
     },
     {
         "id":2,
         "name":"on the road",
-        "year":"2002",
-        "duration": "40-60mins"  
+        "year":2002,
+        "duration": 60  
     },
     {
         "id":3,
         "name":"In the sun",
-        "year":"2003",
-        "duration": "35-50mins"   
+        "year":2003,
+        "duration": 50  
     }    
 
 ]

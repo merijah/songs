@@ -17,6 +17,7 @@ const SongTable = (props: ISongcomponent) => {
                         <th>duration</th>
                         <th>year</th>
                         <th>author</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

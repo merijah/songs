@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import ArtistTable from './components/ArtistTable';
-import Counter from './components/counter';
-
-import data from './mock/artists.json';
+import artistsData from './mock/artists.json';
 import { IArtist } from './models/artists';
 
+import AlbumTable from './components/AlbumTable';
+import albumsData from './mock/album.json';
+import { IAlbum } from './models/albums';
+import 
+
+
 function App() {
+  const [album, setAlbum] = useState<IAlbum[]>([])
   const [artists, setArtists] = useState<IArtist[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const mapObject = (obj: { id?: number, firstname: string, lastname: string, country: string, about: string }[]): IArtist[] => {
@@ -56,23 +61,59 @@ function App() {
     })
     return result;
   }
-
   useEffect(() => {
-    if (data) {
+    if (artistsData) {
       setIsLoading(true);
-      const _artists: IArtist[] = mapObject(data);
+      const _artists: IArtist[] = mapObject(artistsData);
       setArtists(_artists);
       setTimeout(() => setIsLoading(false), 3000);
+      if (albumsData) {
+        setIsLoading(true);
+        setAlbum(album);
+        setTimeout(() => setIsLoading(false), 4000);
+      }
     }
-  }, [data]);
-  
+  }, [albumsData]);
+  [artistsData]
+
   return (
     <div>
       <h1>Welcome</h1>
       <ArtistTable artists={artists} isLoading={isLoading} />
-      <Counter />
+      <AlbumTable albums={album} isLoading={isLoading} />
+
+
     </div>
   );
 }
-
 export default App;
+
+//,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+/*import AlbumTable from './components/album';
+
+import albumsData from './mock/album.json';
+import { IAlbum } from './models/albums';
+
+function  App() {
+const [albums, setAlbum] = useState<IAlbum[]>([])
+const [isloading, setIsLoading] = useState<boolean>(false);*/
+
+
+/*useEffect(() => {
+  if (albumsData) {
+    setIalbums(_albums);
+    // setIsLoading(true);
+    // setTimeout(() => setIsLoading(false), 4000);
+  }
+}, [albumsData]);
+
+/*return (
+ <div>
+   <h1>Welcome</h1>
+   <AlbumTable albums={albums} isLoading={isloading} />
+
+ </div>
+);
+export default App*/
+

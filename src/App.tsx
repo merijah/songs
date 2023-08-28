@@ -6,7 +6,6 @@ import { IArtist } from './models/artists';
 import AlbumTable from './components/AlbumTable';
 import albumsData from './mock/album.json';
 import { IAlbum } from './models/albums';
-import 
 
 
 function App() {

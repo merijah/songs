@@ -3,14 +3,20 @@ import ArtistTable from './components/ArtistTable';
 import artistsData from './mock/artists.json';
 import { IArtist } from './models/artists';
 
+
 import AlbumTable from './components/AlbumTable';
 import albumsData from './mock/album.json';
 import { IAlbum } from './models/albums';
+
+import SongTable from './components/SongTable';
+import songsdata from './mock/songs.json';
+import { ISong } from './models/songs';
 
 
 function App() {
   const [album, setAlbum] = useState<IAlbum[]>([])
   const [artists, setArtists] = useState<IArtist[]>([])
+  const [song, setSong] = useState<ISong[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const mapObject = (obj: { id?: number, firstname: string, lastname: string, country: string, about: string }[]): IArtist[] => {
     // const result: IArtist[] = [];
@@ -76,44 +82,24 @@ function App() {
       setTimeout(() => setIsLoading(false), 3000);
     }
   }, [artistsData]);
+
+  useEffect(() => {
+    if (songsdata) {
+      setIsLoading(true);
+      setSong(songsdata);
+      setTimeout(() => setIsLoading(false), 3000);
+    }
+  }, [songsdata]);
+
   return (
     <div>
       <h1>Welcome</h1>
       <ArtistTable artists={artists} isLoading={isLoading} />
       <AlbumTable albums={album} isLoading={isLoading} />
-
+      <SongTable songs={song} isloading={isLoading} />
 
     </div>
   );
 }
 export default App;
-
-//,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-
-/*import AlbumTable from './components/album';
-
-import albumsData from './mock/album.json';
-import { IAlbum } from './models/albums';
-
-function  App() {
-const [albums, setAlbum] = useState<IAlbum[]>([])
-const [isloading, setIsLoading] = useState<boolean>(false);*/
-
-
-/*useEffect(() => {
-  if (albumsData) {
-    setIalbums(_albums);
-    // setIsLoading(true);
-    // setTimeout(() => setIsLoading(false), 4000);
-  }
-}, [albumsData]);
-
-/*return (
- <div>
-   <h1>Welcome</h1>
-   <AlbumTable albums={albums} isLoading={isloading} />
-
- </div>
-);
-export default App*/
 

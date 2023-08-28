@@ -15,7 +15,7 @@ const AlbumTable = (props: IAlbumComponent) => {
                         <th>name</th>
                         <th>year</th>
                         <th>duration</th>
-                        <th>action</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

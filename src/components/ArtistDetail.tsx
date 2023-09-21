@@ -1,8 +1,11 @@
+import { memo } from "react";
+import { IArtist } from "../models/artists";
+
 export interface IArtistDetailProps{
-    id?: string;
+    artist?: IArtist
 }
 const ArtistDetail = (props: IArtistDetailProps) => {
-    const {id} = props;
+    const {artist} = props;
 
     /**
      * create local state for artist
@@ -10,14 +13,19 @@ const ArtistDetail = (props: IArtistDetailProps) => {
      * if success, assign the result to artist state
      * else display a message that shows there is no artist with the selected id
      */
+    console.log("child rendering")
     return (<div>
-            <ul>
-                <li>First Name: Meron</li>
-                <li>Last Name: Legesse</li>
-                <li>Country: A.A.</li>
-                <li>About: About mery</li>
-            </ul>
+            {artist && <ul>
+                <li>Id: {artist.id}</li>
+                <li>First Name: {artist.firstName }</li>
+                <li>Last Name: {artist.lastName }</li>
+                <li>Country: {artist.country}</li>
+                <li>About: {artist.about}</li>
+            </ul>}
         </div>)
 }
 
-export default ArtistDetail;
+const areEqual = (oldProp: IArtistDetailProps, newProp: IArtistDetailProps): boolean => {
+    return oldProp.artist?.id === newProp.artist?.id;
+}
+export default memo(ArtistDetail, areEqual);

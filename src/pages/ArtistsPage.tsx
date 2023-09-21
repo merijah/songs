@@ -3,19 +3,22 @@ import ArtistTable from'../components/ArtistTable';
 import artistsData from'../mock/artists.json';
 import { IArtist} from'../models/artists';
 
+export const mapArtistObject = (obj: { id?: number, firstname: string, lastname: string, country: string, about: string }) => {
+    return {
+        firstName: obj.firstname,
+        lastName: obj.lastname,
+        id: obj.id,
+        country: obj.country,
+        about: obj.about
+    }
+}
 const ArtistsPage = () => {
     const [artist, setArtist] = useState<IArtist[]>([])
     const [isloading, setIsLoading] = useState<boolean>(false);
 
     const mapObject = (obj: { id?: number, firstname: string, lastname: string, country: string, about: string }[]): IArtist[] => { 
             const result: IArtist[] = obj.map((c) => {
-                const o: IArtist = {
-                    firstName: c.firstname,
-                    lastName: c.lastname,
-                    id: c.id,
-                    country: c.country,
-                    about: c.about
-                }
+                const o: IArtist = mapArtistObject(c)
             return o;
           })
           return result;

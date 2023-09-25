@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { IArtist } from '../models/artists';
 
 interface IArtistComponent {
@@ -31,7 +32,7 @@ const ArtistTable = (props: IArtistComponent) => {
                                 <td>{artist.country}</td>
                                 {/* <td>{artist.about}</td> */}
                                 <td>
-                                    <button type="button" onClick={() => console.log(`detail - ${artist.id}`)}>Detail</button>
+                                    <Link to={`/artists/${artist.id}`} className="btn">Detail</Link>
                                     <button type="button" onClick={() => console.log(`update - ${artist.id}`)}>Update</button>
                                     <button type="button" onClick={() => console.log(`delete - ${artist.id}`)}>Delete</button>
                                 </td>

@@ -1,4 +1,5 @@
 import { IAlbum } from '../models/albums';
+import { Link } from 'react-router-dom';
 
 interface IAlbumComponent {
     albums: IAlbum[],
@@ -28,7 +29,7 @@ const AlbumTable = (props: IAlbumComponent) => {
                                 <td>{album.year}</td>
                                 <td>{album.duration}</td>
                                 <td>
-                                    <button type="button" onClick={() => console.log(`detail - ${album.id}`)}>Detail</button>
+                                <Link to={`/albums/${album.id}`} className="btn">Detail</Link>
                                     <button type="button" onClick={() => console.log(`update - ${album.id}`)}>Update</button>
                                     <button type="button" onClick={() => console.log(`delete - ${album.id}`)}>Delete</button>
                                 </td>

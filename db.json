@@ -1,0 +1,75 @@
+{
+  "artists": [
+    {
+      "firstname": "Meron",
+      "lastname": "Legesse",
+      "country": "Addis Ababa",
+      "about": "About Meron",
+      "id": 1
+    },
+    {
+      "id": 3,
+      "firstname": "tina",
+      "lastname": "abera",
+      "country": " bahirdar",
+      "about": "about artist"
+    },
+    {
+      "id": 4,
+      "firstname": "natnael",
+      "lastname": "zeleke",
+      "country": "gondar",
+      "about": "about artist"
+    },
+    {
+      "firstname": "Suse",
+      "lastname": "Legesse",
+      "country": "Addis Ababa",
+      "about": "About Meron",
+      "id": 5
+    }
+  ],
+  "albums" : [
+    {
+        "id":1,
+        "name":"see the world",
+        "year":2000,
+        "duration": 60
+    },
+    {
+        "id":2,
+        "name":"on the road",
+        "year":2002,
+        "duration": 60  
+    },
+    {
+        "id":3,
+        "name":"In the sun",
+        "year":2003,
+        "duration": 50  
+    }    
+  ],
+  "songs" : [
+    {
+        "id":1,
+        "title":"Rain",
+        "duration":3,
+        "year":2010,
+        "author":"Meri j"
+      }, 
+      {
+        "id":2,
+        "title":"Guilty",
+        "duration":5,
+        "year":2022,
+        "author":"Antony b" 
+      },
+      {
+        "id":3,
+        "title":"Family",
+        "duration":4,
+        "year":2009,
+        "author":"Jani g" 
+      }
+  ]
+}

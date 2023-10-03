@@ -1,23 +1,29 @@
 import { useParams } from "react-router-dom";
 import ArtistDetail from "../components/ArtistDetail";
-import artistsData from'../mock/artists.json';
 import { useEffect, useState } from "react";
 import { IArtist } from "../models/artists";
 import { mapArtistObject } from "./ArtistsPage";
+import { EndPoints } from "../api/endPoints";
 
 const ArtistDetailPage = () => {
     const {id} = useParams();
     const [artist, setArtist] = useState<IArtist | undefined>(undefined);
-
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
-        const result = artistsData.find(item => item.id.toString() === id);
-        if (result) {
-            setArtist(mapArtistObject(result));
-        }
+        setIsLoading(true);
+        fetch(`${EndPoints.getArtistByIdUrl}/${id}`)
+            .then((response) => {
+                response.json()
+                        .then((data) => setArtist(mapArtistObject(data)))
+                        .catch((error) => console.log(error))
+            })
+            .catch((error) => {});
+        setIsLoading(false);
     }, []);
+
     return (
         <>
-            <ArtistDetail artist={artist}/>
+            {isLoading ? <h1>Loading artist detail...</h1> : <ArtistDetail artist={artist}/>}
         </>
     )
 }

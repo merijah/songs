@@ -15,13 +15,13 @@ const ArtistDetail = (props: IArtistDetailProps) => {
      */
     console.log("child rendering")
     return (<div>
-            {artist && <ul>
+            {artist ? <ul>
                 <li>Id: {artist.id}</li>
                 <li>First Name: {artist.firstName }</li>
                 <li>Last Name: {artist.lastName }</li>
                 <li>Country: {artist.country}</li>
                 <li>About: {artist.about}</li>
-            </ul>}
+            </ul> : <h1>No data found</h1>}
         </div>)
 }
 

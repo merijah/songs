@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ArtistTable from'../components/ArtistTable';
-import artistsData from'../mock/artists.json';
 import { IArtist} from'../models/artists';
+import { EndPoints } from "../api/endPoints";
 
 export const mapArtistObject = (obj: { id?: number, firstname: string, lastname: string, country: string, about: string }) => {
     return {
@@ -13,7 +13,8 @@ export const mapArtistObject = (obj: { id?: number, firstname: string, lastname:
     }
 }
 const ArtistsPage = () => {
-    const [artist, setArtist] = useState<IArtist[]>([])
+    const [artists, setArtists] = useState<IArtist[]>([])
+    const [artistsData, setArtistsData] = useState([])
     const [isloading, setIsLoading] = useState<boolean>(false);
 
     const mapObject = (obj: { id?: number, firstname: string, lastname: string, country: string, about: string }[]): IArtist[] => { 
@@ -25,17 +26,18 @@ const ArtistsPage = () => {
         }
 
      useEffect(() => {
-        if (artistsData) {
             setIsLoading(true);
-            const _artists: IArtist[] = mapObject(artistsData);
-            setArtist(_artists);
+            fetch(EndPoints.getArtistsUrl).then((response) => {
+                response.json().then((data) => {
+                    const _artists: IArtist[] = mapObject(data);
+            setArtists(_artists);
+                }).catch((error) => {})
+            }).catch((err) => {});
             setIsLoading(false);
-            // setTimeout(() => setIsLoading(false), 3000);
-        }
-    }, [artistsData]);
+    }, []);
 
  return (
-    <ArtistTable artists={artist} isLoading={isloading} />
+    <ArtistTable artists={artists} isLoading={isloading} />
    )
 }
  export default ArtistsPage;

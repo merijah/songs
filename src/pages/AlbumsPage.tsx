@@ -7,27 +7,29 @@ import { EndPoints } from "../api/endPoints";
 const AlbumsPage = () => {
     const [albums, setAlbums] = useState<IAlbum[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    useEffect(() => {
-    setIsLoading(true);
-     fetch(EndPoints.getAlbumsUrl)
+    const fetchAlbum = () => {
+        fetch(EndPoints.getAlbumsUrl)
             .then(Response => {
              Response.json().then((data) => {
-                setAlbums(data)
+                setAlbums(data.message)
                 // const _albums: IAbum[] = data;
                 // setAlbums(_albums)
              }
-                
-             )
+          )
             })
             .catch(err => {
 
-            })
-
+            });
+    }
+    useEffect(() => {
+    setIsLoading(true);
+    fetchAlbum();
     setIsLoading(false);
 
     }, []);
  return (
-        <AlbumTable albums={albums} isLoading={isLoading} />
+        <AlbumTable albums={albums} isLoading={isLoading} fetchAlbum={fetchAlbum}/>
     )
 }
 export default AlbumsPage;
+

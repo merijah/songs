@@ -1,6 +1,7 @@
 export interface IAlbum{
-    id?: number;
+    _id?: string;
     name: string;
     year: number;
     duration:number;
+    __v?: number
 }

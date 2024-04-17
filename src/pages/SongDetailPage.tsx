@@ -14,7 +14,7 @@ const SongDetailPage = () => {
         fetch(`${EndPoints.getSongsByIdUrl}/${id}`)
             .then((response) => {
                 response.json()
-                    .then(data => setSongs(data))
+                    .then(data => setSongs(data.data))
                     .catch(error => console.log(error))
 
             }

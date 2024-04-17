@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom";
-import ArtistDetail from "../components/ArtistDetail";
 import { useEffect, useState } from "react";
+import UpdateArtistForm from "../components/ArtistUpdateForm";
+import { useParams } from 'react-router-dom';
 import { IArtist } from "../models/artists";
-// import { mapArtistObject } from "./ArtistsPage";
 import { EndPoints } from "../api/endPoints";
 
-const ArtistDetailPage = () => {
-    const {id} = useParams();
-    const [artist, setArtist] = useState();
+const UpdateArtistPage = () => {
+    const params = useParams();
+    const { id } = params;
+    
+    const [artist, setArtist] = useState<IArtist | undefined>(undefined);
+
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         setIsLoading(true);
@@ -22,10 +24,8 @@ const ArtistDetailPage = () => {
     }, []);
 
     return (
-        <>
-            {isLoading ? <h1>Loading artist detail...</h1> : <ArtistDetail artist={artist}/>}
-        </>
-    )
+        <>{artist?._id === undefined ? <div>There is no artist with the provided id</div> : <UpdateArtistForm artist={artist}/>}</>
+        );
 }
 
-export default ArtistDetailPage;
+export default UpdateArtistPage;

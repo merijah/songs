@@ -9,7 +9,6 @@ const AlbumDetail = (props: IAlbumDetailprops) => {
 
     return ( <div>
         {album ? <ul>
-            <li>Id: {album.id}</li>
             <li>name: {album.name}</li>
             <li>year: {album.year}</li>
             <li>duration: {album.duration}</li>
@@ -20,6 +19,6 @@ const AlbumDetail = (props: IAlbumDetailprops) => {
  
 }
 
-const areEqual = (oldAlbum: IAlbumDetailprops, newAlbum: IAlbumDetailprops): boolean => oldAlbum.album?.id === newAlbum.album?.id;
+const areEqual = (oldAlbum: IAlbumDetailprops, newAlbum: IAlbumDetailprops): boolean => oldAlbum.album?._id === newAlbum.album?._id;
 
 export default memo(AlbumDetail, areEqual);

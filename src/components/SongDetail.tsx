@@ -10,7 +10,6 @@ const SongDetail = (props:ISongDetailprops) => {
 
     return(<div>
         {song ? <ul>
-            <li>Id:{song.id}</li>
             <li>title:{song.title}</li>
             <li>duration: {song.duration}</li>
             <li>year: {song.year}</li>
@@ -21,4 +20,4 @@ const SongDetail = (props:ISongDetailprops) => {
     )
 }
 
-export default memo (SongDetail, (oldSong: ISongDetailprops, newSong:ISongDetailprops)  => oldSong.song?.id===newSong.song?.id);
+export default memo (SongDetail, (oldSong: ISongDetailprops, newSong:ISongDetailprops)  => oldSong.song?._id===newSong.song?._id);

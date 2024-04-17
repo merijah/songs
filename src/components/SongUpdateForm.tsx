@@ -19,14 +19,7 @@ const UpdateSongForm = (props: ISongUpdateprops) => {
         
     });
     const { TextArea } = Input;
-    const changeHandler = (e: any) => {
-        setData(prev => {
-            return {
-                ...prev,
-                [e.target.id]: e.target.value
-            }
-        });
-    }
+    
     const [body, setBody] = useState<ISong | null>(null)
     const [form] = Form.useForm();
     const onFinish = async(value: ISong) => {
@@ -35,7 +28,6 @@ const UpdateSongForm = (props: ISongUpdateprops) => {
             duration: Number(value.duration),
             year: Number (value.year),
             author: value.author,
-            __v: 0
         };
         setBody(updatedData);
 
@@ -43,7 +35,7 @@ const UpdateSongForm = (props: ISongUpdateprops) => {
             EndPoints.updateSong + '/' + song?._id, 
             { 
                 method: 'PATCH', 
-                body: JSON.stringify(data),
+                body: JSON.stringify(body),
                 headers: {
                     'Content-Type': 'application/json'
                 }

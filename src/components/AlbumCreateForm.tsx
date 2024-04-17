@@ -35,7 +35,7 @@ const CreateAlbumForm = () => {
         const result = await fetch(EndPoints.createAlbum, 
             { 
              method: 'POST', 
-             body: JSON.stringify(data),
+             body: JSON.stringify(album),
              headers: {
                 'Content-Type': 'application/json'
              }

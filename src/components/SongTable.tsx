@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ISong } from '../models/songs';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Modal, Result, Table } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import result from 'antd/es/result';
@@ -12,6 +12,9 @@ interface ISongcomponent {
     fetchSong: () => void;
 }
 const SongTable = (props: ISongcomponent) => {
+    const params = useParams();
+    const { id } = params;
+
     const [selectedId, setSelectedId] = useState('')
     const navigate =useNavigate();
     const columns = [
@@ -72,7 +75,7 @@ const SongTable = (props: ISongcomponent) => {
             <Modal title="Delete Song" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <p>Are you sure you want to delete this item? {selectedId}</p>
       </Modal>
-            <Button type = "link"><Link to="/songs/create">Create New</Link></Button>
+            {!id && <Button type = "link"><Link to="/songs/create">Create New</Link></Button>}
             <Table columns={columns} dataSource={songs} rowClassName="table-row" />
         </div>
     );

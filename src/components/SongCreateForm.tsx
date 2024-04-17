@@ -15,15 +15,7 @@ const CreateSongForm = () => {
         author:"",
 
     });
-    const { TextArea } = Input;
-    const changeHandler = (e: any) => {
-        setData(prev => {
-            return {
-                ...prev,
-                [e.target.id]: e.target.value
-            }
-        });
-    }
+    
     const [body, setBody] =useState<ISong | undefined>(undefined)
     const [form] = Form.useForm();
     const onFinish= async(value: ISong) =>{
@@ -40,7 +32,7 @@ const CreateSongForm = () => {
                             EndPoints.createSong, 
                             { 
                                 method: 'POST', 
-                                body: JSON.stringify(body), 
+                                body: JSON.stringify(Song), 
                                 headers: {
                                     "Content-Type": "application/json"
                                 } });

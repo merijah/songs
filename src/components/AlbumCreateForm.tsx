@@ -5,6 +5,7 @@ import { Form } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { EndPoints } from '../api/endPoints'
 import './formStyle.css'
+import { useNavigate } from "react-router-dom";
 
 
 const CreateAlbumForm = () => {
@@ -24,6 +25,7 @@ const CreateAlbumForm = () => {
     }
     const [body, setBody] = useState<IAlbum | undefined>(undefined);
     const [form] = Form.useForm();
+    const navigate = useNavigate();
     const onFinish = async (value: IAlbum) => {
         const album: IAlbum = {
             name: value.name,
@@ -35,11 +37,12 @@ const CreateAlbumForm = () => {
         const result = await fetch(EndPoints.createAlbum, 
             { 
              method: 'POST', 
-             body: JSON.stringify(data),
+             body: JSON.stringify(album),
              headers: {
                 'Content-Type': 'application/json'
              }
             });
+            navigate("/albums");
     }
     return (
         <div className="container">

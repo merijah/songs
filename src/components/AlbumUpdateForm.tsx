@@ -5,11 +5,14 @@ import { Form, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { EndPoints } from "../api/endPoints";
 import "./formStyle.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface IAlbumUpdateprops {
     album: any
 }
 const UpdateAlbumForm = (props: IAlbumUpdateprops) => {
+    const params = useParams();
+    const { id } = params;
     const {album}=props;
     const [data, setData] =useState<{name:string, year:string, duration:string}>({
       name: album.name,
@@ -17,16 +20,10 @@ const UpdateAlbumForm = (props: IAlbumUpdateprops) => {
       duration: album.duration
     });
     const {TextArea} = Input;
-    const changeHandler = (e:any) => {
-        setData(prev =>{
-            return{
-                ...prev,
-              [e.target.id] : e.target.value
-            }
-        });
-    }
+    
     const [body, setBody] =useState<IAlbum | null>(null);
     const [form]= Form.useForm();
+    const navigate = useNavigate();
     const onFinish = async (values:IAlbum) =>{
         const updatedData: IAlbum ={
         name: values.name,
@@ -35,13 +32,13 @@ const UpdateAlbumForm = (props: IAlbumUpdateprops) => {
         };
         setBody(updatedData);
         const result = await fetch(
-              EndPoints.updateAlbum,
-             { method: 'PUT',
-               body: JSON.stringify(body) ,
+              `${EndPoints.updateAlbum}/${id}`,
+             { method: 'PATCH',
+               body: JSON.stringify(updatedData) ,
                headers: {
                 "Content-Type": "application/json"
              }});
-
+         navigate("/albums");
     }
     return (
         <div className="container">

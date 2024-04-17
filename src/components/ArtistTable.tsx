@@ -35,7 +35,7 @@ const ArtistTable = (props: IArtistComponent) => {
             key: "actions",
             render: (item: String, record: any) => {
                 return (
-                    <div>
+                    <div style={{ display: 'flex', gap: 10}}>
                 <Button type='primary' onClick={() => navigate(`/artists/${record._id}`)}>Detail</Button> 
                 <Button icon={<EditOutlined />}
                     onClick={() => navigate(`/artists/update/${record._id}`)}>Update</Button> 

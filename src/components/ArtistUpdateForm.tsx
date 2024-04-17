@@ -5,12 +5,15 @@ import { UserOutlined } from '@ant-design/icons';
 import FormItem from 'antd/es/form/FormItem';
 import './formStyle.css';
 import { EndPoints } from '../api/endPoints';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface IArtistUpdateProps {
     artist?: any
 }
 const UpdateArtistForm = (props: IArtistUpdateProps) => {
     const { artist } = props;
+    const params = useParams();
+    const { id } = params;
     
     const [data, setData] = useState<{ firstname: string, lastname: string, country: string, about: string }> ({
         firstname: artist.firstName,
@@ -18,34 +21,33 @@ const UpdateArtistForm = (props: IArtistUpdateProps) => {
         country: artist.country,
         about: artist.about
         });
-        const { TextArea } = Input;
-    const changeHandler = (e: any) => {
-        setData(prev => {
-            return {
-                ...prev,
-                [e.target.id]: e.target.value
-            }
-        });
-    }
+        
+            const { TextArea } = Input;
+        const navigate = useNavigate();
         const [body, setBody] = useState<IArtist | null>(null)
         const [form] = Form.useForm();
-        const onFinish = async (values: IArtist) => {
+        
+        const onFinish = async (values: any) => {
     
             const updatedData: IArtist = {
-                firstName: values.firstName,
-                lastName: values.lastName,
+                firstName: values.firstname,
+                lastName: values.lastname,
                 country: values.country,
                 about: values.about
             };
+        const { TextArea } = Input;
+        
             setBody(updatedData);
             const result = await fetch(
-                EndPoints.updateArtist, 
+                EndPoints.updateArtist + '/' + id, 
                 { method: 'PATCH', 
-                body: JSON.stringify(body),
+                body: JSON.stringify(updatedData),
                 headers: {
                     "Content-Type": "application/json"
                } });
-        }
+               navigate("/artists");
+        };
+        
         return (
         <div style={{ width: 300 }}>
             <Form onFinish={onFinish} form={form} initialValues={{
@@ -88,7 +90,7 @@ const UpdateArtistForm = (props: IArtistUpdateProps) => {
                     rules={[{ required: true, message: "write about youself" }]}>
                     <TextArea id="name"  placeholder="About artist" allowClear />
                 </Form.Item>
-                <Button type="primary" htmlType="submit"> Submit </Button>
+                <Button type="primary"   htmlType="submit"> Submit </Button>
             </Form>
         </div>
     )

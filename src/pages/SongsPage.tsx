@@ -7,24 +7,25 @@ import { EndPoints } from '../api/endPoints';
 const SongsPage = () => {
     const [song, setSong] = useState<ISong[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const fetchSong = () => {
+        fetch(EndPoints.getSongsUrl)
+        .then(Response => {
+            Response.json().then((data) => {
+                setSong(data.message)
+            }
+            )
+        })
+        .catch(err => {
 
+        })
+    }
     useEffect(() => {
         setIsLoading(true);
-        fetch(EndPoints.getSongsUrl)
-            .then(Response => {
-                Response.json().then((data) => {
-                    setSong(data)
-                }
-                )
-            })
-            .catch(err => {
-
-            })
-
         setIsLoading(false);
+        fetchSong();
     }, []);
     return (
-        <SongTable songs={song} isloading={isLoading} />
+        <SongTable songs={song} isloading={isLoading}  fetchSong={fetchSong}/>
     )
 }
 export default SongsPage;

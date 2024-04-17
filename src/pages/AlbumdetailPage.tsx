@@ -8,7 +8,7 @@ import { EndPoints } from '../api/endPoints';
 
 const AlbumDetailPage = () => {
     const { id } = useParams();
-    const [album, setAlbums] = useState<IAlbum | undefined>(undefined);
+    const [album, setAlbums] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -16,12 +16,13 @@ const AlbumDetailPage = () => {
         fetch(`${EndPoints.getAlbumByIdUrl}/${id}`)
         .then((response) => {
             response.json()
-               .then(data => setAlbums(data))
+               .then(data => setAlbums(data.data))
                .catch(error => console.log(error))
-
-        }
-        ).catch(error => console.log(error))
-    }, []    )
+         }
+        )
+      .catch(error => {});
+      setIsLoading(false);
+   }, []    )
 
     return <AlbumDetail album={album} />
 

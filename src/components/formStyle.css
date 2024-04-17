@@ -1,0 +1,41 @@
+.body-container{
+    height: 100vh;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    
+   
+}
+.container > .form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container > .form > .submit{
+    text-align: center;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.table-row{
+    background: none !important;
+    background-color: transparent !important;
+}
+/* 
+basic
+    selectors
+    units
+
+Advanced
+    BEM => Block, Element, Modifier
+    artist-submit__red
+    artist-submit__black
+
+    Specifity
+    Architecture => 7 in 1
+*/

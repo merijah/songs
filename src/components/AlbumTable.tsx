@@ -22,8 +22,7 @@ const AlbumTable = (props: IAlbumComponent) => {
     const result = await fetch(url, { method: "DELETE" });
     const data = await result.json();
      return data;
-// fetchAlbum();
-//     }
+
   };
 
   const columns = [

@@ -4,6 +4,7 @@ import { Button, Form, Input,} from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import './formStyle.css';
 import { EndPoints } from "../api/endPoints";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,6 +19,7 @@ const CreateSongForm = () => {
     
     const [body, setBody] =useState<ISong | undefined>(undefined)
     const [form] = Form.useForm();
+    const navigate = useNavigate();
     const onFinish= async(value: ISong) =>{
         console.log(value)
         const Song: ISong = {
@@ -36,6 +38,7 @@ const CreateSongForm = () => {
                                 headers: {
                                     "Content-Type": "application/json"
                                 } });
+                                navigate("/songs");
 
      }
      return (

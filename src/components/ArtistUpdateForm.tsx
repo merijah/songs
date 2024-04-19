@@ -5,7 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 import FormItem from 'antd/es/form/FormItem';
 import './formStyle.css';
 import { EndPoints } from '../api/endPoints';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface IArtistUpdateProps {
     artist?: any
@@ -21,10 +21,12 @@ const UpdateArtistForm = (props: IArtistUpdateProps) => {
         country: artist.country,
         about: artist.about
         });
-        const { TextArea } = Input;
-    
+        
+            const { TextArea } = Input;
+        const navigate = useNavigate();
         const [body, setBody] = useState<IArtist | null>(null)
         const [form] = Form.useForm();
+        
         const onFinish = async (values: any) => {
     
             const updatedData: IArtist = {
@@ -43,7 +45,9 @@ const UpdateArtistForm = (props: IArtistUpdateProps) => {
                 headers: {
                     "Content-Type": "application/json"
                } });
-        }
+               navigate("/artists");
+        };
+        
         return (
         <div style={{ width: 300 }}>
             <Form onFinish={onFinish} form={form} initialValues={{
@@ -86,7 +90,7 @@ const UpdateArtistForm = (props: IArtistUpdateProps) => {
                     rules={[{ required: true, message: "write about youself" }]}>
                     <TextArea id="name"  placeholder="About artist" allowClear />
                 </Form.Item>
-                <Button type="primary" htmlType="submit"> Submit </Button>
+                <Button type="primary"   htmlType="submit"> Submit </Button>
             </Form>
         </div>
     )

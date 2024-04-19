@@ -33,7 +33,6 @@ const AlbumDetail = (props: IAlbumDetailprops) => {
         fetchSong();
     }, []);
 
-
     const fetchAllSongs = () => {
         fetch(EndPoints.getSongsUrl)
         .then(Response => {
@@ -79,6 +78,7 @@ const AlbumDetail = (props: IAlbumDetailprops) => {
             )
         }},
     ]
+     
     return ( <div>
         {album ? 
         <div>

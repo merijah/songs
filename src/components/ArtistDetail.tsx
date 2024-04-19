@@ -80,6 +80,7 @@ const ArtistDetail: React.FC<IArtistDetailProps> = ({artist}) => {
         }},
     ];
     
+    
     return (<div>
             {artist ? 
             <div>

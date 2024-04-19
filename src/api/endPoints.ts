@@ -6,6 +6,7 @@ export class EndPoints{
     static getArtistByIdUrl = `${EndPoints.baseUrl}/artists`;
     static createArtist = `${EndPoints.baseUrl}/artists`;
     static updateArtist = `${EndPoints.baseUrl}/artists`;
+    static removeAlbumUrl =  `${EndPoints.baseUrl}/artists`;
 
 
     static getAlbumsUrl = `${EndPoints.baseUrl}/albums`;
@@ -15,10 +16,12 @@ export class EndPoints{
     static updateAlbum = `${EndPoints.baseUrl}/albums`;
 
 
+
     static getSongsUrl = `${EndPoints.baseUrl}/songs`;
     static deleteSongUrl= `${EndPoints.baseUrl}/songs`;
     static getSongsByIdUrl = `${EndPoints.baseUrl}/songs`;
     static createSong = `${EndPoints.baseUrl}/songs`;
     static updateSong = `${EndPoints.baseUrl}/songs`;
+  
    
 }

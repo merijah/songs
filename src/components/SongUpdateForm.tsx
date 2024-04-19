@@ -5,6 +5,7 @@ import { UserOutlined } from "@ant-design/icons";
 import FormItem from 'antd/es/form/FormItem';
 import './formStyle.css';
 import { EndPoints } from '../api/endPoints';
+import { useNavigate } from "react-router-dom";
 
 interface ISongUpdateprops {
     song?: ISong
@@ -19,7 +20,7 @@ const UpdateSongForm = (props: ISongUpdateprops) => {
         
     });
     const { TextArea } = Input;
-    
+    const navigate = useNavigate();
     const [body, setBody] = useState<ISong | null>(null)
     const [form] = Form.useForm();
     const onFinish = async(value: ISong) => {
@@ -40,7 +41,7 @@ const UpdateSongForm = (props: ISongUpdateprops) => {
                     'Content-Type': 'application/json'
                 }
              });
-
+      navigate("/songs")
     }
     return (
         <div className="container">

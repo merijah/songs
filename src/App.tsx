@@ -1,42 +1,48 @@
-
-import { useState } from 'react';
-import ArtistsPage from './pages/ArtistsPage';
-import AlbumsPage from './pages/AlbumsPage';
-import SongsPage from './pages/SongsPage';
-import AlbumDetailPage from './pages/AlbumdetailPage';
-import { BrowserRouter, Link, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
-import PageNotFoundPage from './pages/PageNotFoundPage';
-import './App.css';
-import ArtistDetailPage from './pages/ArtistDetailPage';
-import SongDetailPage from './pages/SongDetailPage';
-import CreateArtistPage from './pages/CreateArtistsPage';
-import { Menu } from 'antd';
-import UpdateArtistPage from './pages/UpdateArtistsPage';
-import createSongPage from  './pages/CreateSongsPage';
-import UpdateSongPage from './pages/UpdateSongPage';
-import CreateSongsPage from './pages/CreateSongsPage';
-import CreateAlbumPage from './pages/CreateAlbumPage';
-import UpdateAlbumPage from './pages/UpdateAlbumPage';
+import { useState } from "react";
+import ArtistsPage from "./pages/ArtistsPage";
+import AlbumsPage from "./pages/AlbumsPage";
+import SongsPage from "./pages/SongsPage";
+import AlbumDetailPage from "./pages/AlbumdetailPage";
+import {
+  BrowserRouter,
+  Link,
+  NavLink,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+import PageNotFoundPage from "./pages/PageNotFoundPage";
+import "./App.css";
+import ArtistDetailPage from "./pages/ArtistDetailPage";
+import SongDetailPage from "./pages/SongDetailPage";
+import CreateArtistPage from "./pages/CreateArtistsPage";
+import { Menu } from "antd";
+import UpdateArtistPage from "./pages/UpdateArtistsPage";
+import createSongPage from "./pages/CreateSongsPage";
+import UpdateSongPage from "./pages/UpdateSongPage";
+import CreateSongsPage from "./pages/CreateSongsPage";
+import CreateAlbumPage from "./pages/CreateAlbumPage";
+import UpdateAlbumPage from "./pages/UpdateAlbumPage";
 
 // declare global {
 //   namespace JSX {
 //     interface IntrinsicElements {
 //       [elemName: string]: any;
 //     }
-//   } 
+//   }
 // }
 
 function App() {
   const getStyle = (isActive: boolean, isPending: boolean): string => {
     const menuStyle = isActive ? "activeMenuItem" : "inActiveMenuItem";
-    return `${menuStyle} menuItem`
-  }
-  const [current, setCurrent] = useState('artists');
+    return `${menuStyle} menuItem`;
+  };
+  const [current, setCurrent] = useState("artists");
   const items = [
     {
       label: <Link to="/artists">Artists</Link>,
       key: "artists",
-    },   
+    },
     {
       label: <Link to="/albums">Albums</Link>,
       key: "albums",
@@ -44,16 +50,23 @@ function App() {
     {
       label: <Link to="/songs">Songs</Link>,
       key: "songs",
-    }
+    },
   ];
   const onClick = (e: any) => {
-    setCurrent(e.key)
-  }
+    setCurrent(e.key);
+  };
   return (
-    <div className='body-container'>
+    <div className="body-container">
       <BrowserRouter>
-        <div style={{ width: '80%', marginLeft: '25%' }}>
-          <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} style={{ backgroundColor: 'transparent' }} />
+        <div style={{ width: "80%", marginLeft: "25%" }}>
+          <Menu
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+            style={{ backgroundColor: "transparent" }}
+          />
+
           <Routes>
             <Route path="/" element={<ArtistsPage />} />
             <Route path="/artists" element={<ArtistsPage />} />
@@ -76,4 +89,3 @@ function App() {
   );
 }
 export default App;
-

@@ -19,9 +19,19 @@ const AlbumTable = (props: IAlbumComponent) => {
 
   const removeAlbum = async() => {
     const url = (`${EndPoints.removeAlbumUrl}/${id}/albums`);
-    const result = await fetch(url, { method: "DELETE" });
-    const data = await result.json();
-     return data;
+    const result = await fetch(url, { 
+      method: "DELETE",
+      body: JSON.stringify(
+        {
+          albumId: selectedId
+        }
+      ),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+     });
+
+     fetchAlbum();
 
   };
 
@@ -52,7 +62,10 @@ const AlbumTable = (props: IAlbumComponent) => {
             Detail
           </Button>
           {id && (
-            <Button icon={<EditOutlined />} onClick={() => setOpen(true)}>
+            <Button onClick={() => {
+              setSelectedId(record._id)
+              setOpen(true);
+              }}>
               Remove
             </Button>
           )}
@@ -130,7 +143,10 @@ const AlbumTable = (props: IAlbumComponent) => {
             removeAlbum();
             setOpen(false);
         }}
-        onCancel={() => setOpen(false)}>
+        onCancel={() => {
+          setSelectedId("");
+          setOpen(false);
+          }}>
         <p>
           Are you sure you want to remove this album from the selected artist?
         </p>

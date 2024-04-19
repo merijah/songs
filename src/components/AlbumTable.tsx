@@ -23,7 +23,7 @@ const AlbumTable = (props: IAlbumComponent) => {
       method: "DELETE",
       body: JSON.stringify(
         {
-          albumId: selectedId
+          // albumId: SelectedId
         }
       ),
       headers: {
@@ -118,6 +118,7 @@ const AlbumTable = (props: IAlbumComponent) => {
       setIsModalOpen(false);
     }
   };
+  console.log(albums)
   const handleCancel = () => {
     setIsModalOpen(false);
     setSelectedId("");

@@ -14,6 +14,7 @@ export class EndPoints{
     static getAlbumByIdUrl = `${EndPoints.baseUrl}/albums`;
     static createAlbum = `${EndPoints.baseUrl}/albums`;
     static updateAlbum = `${EndPoints.baseUrl}/albums`;
+    static removeSongUrl = `${EndPoints.baseUrl}/albums`;
 
 
 
